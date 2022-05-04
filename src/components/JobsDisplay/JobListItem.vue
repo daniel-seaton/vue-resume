@@ -6,19 +6,13 @@
     <JobRoleItem v-for="role in job.roles" :key="role.id" :role="role"/>
 </template>
 
-<script lang="ts">
-import JobRoleItem from '@/components/JobsDisplay/JobRoleItem.vue'
-import type { Job } from '@/types/model'
-import type { PropType } from 'vue'
+<script lang="ts" setup>
+    import JobRoleItem from '@/components/JobsDisplay/JobRoleItem.vue'
+    import type { Job } from '@/types/model'
 
-export default {
-    components: {
-        JobRoleItem
-    },
-    props: {
-        job: Object as PropType<Job>
-    }
-}
+    defineProps<{
+        job: Job
+    }>();
 </script>
 
 <style lang="scss">

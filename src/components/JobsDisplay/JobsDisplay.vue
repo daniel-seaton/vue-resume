@@ -3,21 +3,12 @@
     <JobListItem v-for="job in jobs" :key="job.id" :job="job"/>    
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
     import JobListItem from '@/components/JobsDisplay/JobListItem.vue'
     import type { Job } from '@/types/model'
-    import type { PropType } from 'vue'
-    export default {
-        components: {
-            JobListItem
-        },
-        props: {
-            jobs: {
-                type: Array as PropType<Job[]>
-            }
-        }
-    }
-
+    defineProps<{
+        jobs: Job[]
+    }>();
 </script>
 
 <style lang="scss">

@@ -3,23 +3,17 @@
         <a class="App-Header_link" v-for="(link, index) in links" :key="index" :href="link.href"> {{ link.label }} </a>
     </header>
 </template>
-<script lang="ts">
-    export default {
-        data() {
-            return {
-                links: [{
-                    href: '#experience',
-                    label: 'Experience'
-                }, {
-                    href: '#projects',
-                    label: 'Projects'
-                }, {
-                    href: '#contact-me',
-                    label: 'Contact Me'
-                }]
-            }
-        }
-    }
+<script lang="ts" setup>
+    const links = [{
+        href: '#experience',
+        label: 'Experience'
+    }, {
+        href: '#projects',
+        label: 'Projects'
+    }, {
+        href: '#contact-me',
+        label: 'Contact Me'
+    }]
 </script>
 <style lang="scss">
 @import "@/scss/_variables.scss";

@@ -8,35 +8,23 @@
     </div>
 </template>
 
-<script lang="ts">
-import type { Role } from '@/types/model'
-import type { PropType } from 'vue'
-import moment from 'moment'
+<script lang="ts" setup>
+    import type { Role } from '@/types/model'
+    import { computed } from '@vue/runtime-core';
+    import moment from 'moment'
 
-export default {
-    data() {
-        return {
-            datePlaceHolder: 'Present',
-            dateFormat: 'MMMM YYYY'
-        }
-    },
-    props: {
-        role: {
-            type: Object as PropType<Role>,
-            required: true
-        }
-    },
-    computed: {
-        dateRange() {
-           return `${this.formatDate(this.role.startDate)} to ${this.formatDate(this.role.endDate)}` ;
-        }
-    },
-    methods: {
-        formatDate(date?: Date) {
-            return date ? moment(date).format(this.dateFormat) : this.datePlaceHolder;
-        }
+    const props = defineProps<{
+        role: Role
+    }>();
+
+    const datePlaceHolder = 'Present'
+    const dateFormat = 'MMMM YYYY'
+
+    const dateRange = computed(() => `${formatDate(props.role.startDate)} to ${formatDate(props.role.endDate)}`)
+
+    function formatDate(date?: Date) {
+        return date ? moment(date).format(dateFormat) : datePlaceHolder;
     }
-}
 </script>
 
 <style lang="scss">

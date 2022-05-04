@@ -1,30 +1,24 @@
 <template>
     <div class="Self-Display__container">
-        <p class="Self-Display__phone-number"> {{ self.phoneNumber }}</p>
+        <p class="Self-Display__phone-number"> {{ phoneNumber }}</p>
         <p class="Self-Display__full-name"> {{ fullName }} </p>
-        <p class="Self-Display__email"> {{ self.email}}</p>
+        <p class="Self-Display__email"> {{ email}}</p>
     </div>
-    <div class="Self-Display__description"> {{self.description }} </div>
+    <div class="Self-Display__description"> {{ description }} </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
     import type { Contact } from '@/types/model'
-    import type { PropType } from 'vue'
+    import { computed } from 'vue'
 
-    export default {
-        props: {
-            self: {
-                type: Object as PropType<Contact>,
-                required: true
-            }
-        },
-        computed: {
-            fullName() {
-                return `${this.self.firstName} ${this.self.lastName}`;
-            }
-        }
-    }
+    const props = defineProps<{
+        self: Contact
+    }>();
 
+    const fullName = computed(() => `${props.self.firstName} ${props.self.lastName}`);
+    const phoneNumber = computed(() => props.self.phoneNumber);
+    const email = computed(() => props.self.email);
+    const description = computed(() => props.self.description);
 </script>
 
 <style lang="scss">

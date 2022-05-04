@@ -3,52 +3,45 @@
         Contact Me
     </div>
     <form ref="contactMeForm" class="Contact-Me-Display__form">
-        <LabeledInput label="name" v-model="name">
+        <LabeledInput label="name">
             <input id="name" v-model="name">
         </LabeledInput>
-        <LabeledInput label="email" v-model="email">
+        <LabeledInput label="email">
             <input id="email" v-model="email">
         </LabeledInput>
-        <LabeledInput label="message" v-model="message">
+        <LabeledInput label="message">
             <textarea id="message" v-model="message" rows="10" cols="50"/>
         </LabeledInput>
         <button class="Contact-Me-Display__submit" @click.prevent="sendEmail">Submit</button>
     </form>
 
 </template>
-<script lang="ts">
+<script lang="ts" setup>
     import LabeledInput from '@/components/shared/LabeledInput.vue'
     import { send } from 'emailjs-com'
-    export default {
-        components: {
-            LabeledInput
-        },
-        data() {
-            return {
-                name: '',
-                email: '',
-                message: '',
-            }
-        },
-        methods: {
-            sendEmail() {
-                try {
-                    send('service_jnga4zs', 'template_5hzglhk', {
-                        name: this.name,
-                        email: this.email,
-                        message: this.message
-                    }, '-DOaxjzexiaT2Nbfd')
-                } catch (e) {
-                    console.error(e);
-                }
-                this.resetForm();
-            },
-            resetForm() {
-                this.name = '';
-                this.email = '';
-                this.message = '';
-            }
+    import {  ref } from 'vue';
+
+    const name = ref('');
+    const email = ref('');
+    const message = ref('');
+
+    function sendEmail() {
+        try {
+            send('service_jnga4zs', 'template_5hzglhk', {
+                name: name.value,
+                email: email.value,
+                message: message.value
+            }, '-DOaxjzexiaT2Nbfd')
+        } catch (e) {
+            console.error(e);
         }
+        resetForm();
+    }
+
+    function resetForm() {
+        name.value = ''
+        email.value = '';
+        message.value = '';
     }
 </script>
 <style lang="scss">

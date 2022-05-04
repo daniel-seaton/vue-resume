@@ -6,17 +6,12 @@
     </div>    
 </template>
 
-<script lang="ts">
-    import type { PropType } from '@vue/runtime-core'
+<script lang="ts" setup>
     import type { Project } from '@/types/model'
-    export default {
-        props: {
-            projects: {
-                type: Array as PropType<Project[]>,
-                required: true
-            }
-        }
-    }
+
+    defineProps<{
+        projects: Project[]
+    }>()
 </script>
 
 <style lang="scss">

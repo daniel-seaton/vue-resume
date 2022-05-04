@@ -1,26 +1,21 @@
+
 <template>
     <div class="Labeled-Input__container">
-        <label :for="label" :type="type" class="Labeled-Input__label">{{displayLabel}}:</label>
+        <label :for="label" class="Labeled-Input__label">{{displayLabel}}:</label>
         <div class="Labeled-Input__input">
             <slot />
         </div>
     </div>
 </template>
 
-<script lang="ts">
-    export default {
-        props: {
-            label: {
-                type: String,
-                required: true
-            },
-        },
-        computed: {
-            displayLabel() {
-                return this.label.substring(0, 1).toUpperCase() + this.label.substring(1)
-            },
-        }
-    }
+<script lang="ts" setup>
+    import { computed } from 'vue';
+
+    const props = defineProps<{
+        label: string
+    }>();
+
+    const displayLabel = computed(() => props.label.substring(0, 1).toUpperCase() + props.label.substring(1))
 </script>
 
 <style lang="scss">

@@ -1,14 +1,14 @@
 <template>
   <AppHeader />
   <div class="App__container">
-    <SelfDisplay :self="contactsStore.self" />
-    <JobsDisplay :jobs="jobStore.jobs"/>
-    <ProjectsDisplay :projects="projectsStore.projects" />
+    <SelfDisplay :self="self" />
+    <JobsDisplay :jobs="jobs"/>
+    <ProjectsDisplay :projects="projects" />
     <ContactMeDisplay />
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
   import AppHeader from '@/components/AppHeader.vue'
   import SelfDisplay from '@/components/SelfDisplay.vue'
   import JobsDisplay from '@/components/JobsDisplay/JobsDisplay.vue'
@@ -17,24 +17,17 @@
   import { useJobsStore } from '@/stores/jobs'
   import { useContactsStore } from '@/stores/contacts'
   import { useProjectsStore } from '@/stores/projects'
+  import { computed } from '@vue/runtime-core'
 
-
-  export default {
-    components: {
-      AppHeader,
-      SelfDisplay,
-      JobsDisplay,
-      ProjectsDisplay,
-      ContactMeDisplay
-    },
-    data() {
-        return {
-          contactsStore: useContactsStore(),
-          jobStore: useJobsStore(),
-          projectsStore: useProjectsStore(),
-        }
-    },
+  const stores = {
+    jobs: useJobsStore(),
+    contacts: useContactsStore(),
+    projects: useProjectsStore()
   }
+
+  const self = computed(() => stores.contacts.self);
+  const jobs = computed(() => stores.jobs.jobs);
+  const projects = computed(() => stores.projects.projects);
 </script>
 
 <style>
