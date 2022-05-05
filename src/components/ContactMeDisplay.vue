@@ -2,7 +2,7 @@
     <div id="contact-me" class="Contact-Me-Display__header">
         Contact Me
     </div>
-    <form ref="contactMeForm" class="Contact-Me-Display__form">
+    <form ref="contactMeForm" class="Contact-Me-Display__form" @submit.prevent="sendEmail">
         <LabeledInput label="name">
             <input id="name" v-model="name">
         </LabeledInput>
@@ -12,7 +12,7 @@
         <LabeledInput label="message">
             <textarea id="message" v-model="message" rows="10" cols="50"/>
         </LabeledInput>
-        <button class="Contact-Me-Display__submit" @click.prevent="sendEmail">Submit</button>
+        <input type="submit" class="Contact-Me-Display__submit">
     </form>
 
 </template>
