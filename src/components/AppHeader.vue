@@ -1,19 +1,18 @@
 <template>
     <header class="App-Header_container">
-        <a class="App-Header_link" v-for="(link, index) in links" :key="index" :href="link.href"> {{ link.label }} </a>
+        <a class="App-Header_link" v-for="(href, index) in hrefs" :key="index" :href="href"> {{ labels[index] }} </a>
     </header>
 </template>
 <script lang="ts" setup>
-    const links = [{
-        href: '#experience',
-        label: 'Experience'
-    }, {
-        href: '#projects',
-        label: 'Projects'
-    }, {
-        href: '#contact-me',
-        label: 'Contact Me'
-    }]
+    import { computed } from 'vue'
+
+    const hrefs = ['#experience', '#projects', '#contact-me']
+
+    const labels = computed(() => hrefs.map((href) => href.substring(1).split('-').map(capitalizeFirstLetter).join(' ')))
+
+    function capitalizeFirstLetter(str: string) {
+        return str.substring(0, 1).toUpperCase() + str.substring(1)
+    }
 </script>
 <style lang="scss">
 @import "@/scss/_variables.scss";
@@ -24,6 +23,7 @@
     background-image: linear-gradient($light-grey, $dark-grey);
     padding: 15px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 200;
 }
 
 .App-Header_link {
