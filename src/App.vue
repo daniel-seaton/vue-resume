@@ -2,14 +2,21 @@
   <AppHeader />
   <div class="App__container">
     <SelfDisplay :self="self" />
-    <JobsDisplay :jobs="jobs"/>
-    <ProjectsDisplay :projects="projects" />
-    <ContactMeDisplay />
+    <Section id="experience"> 
+      <JobsDisplay :jobs="jobs"/>
+    </Section>
+    <Section id="projects" reverseHeader> 
+      <ProjectsDisplay :projects="projects" />
+    </Section>
+    <Section id="contact-me">
+      <ContactMeDisplay />
+    </Section>
   </div>
 </template>
 
 <script lang="ts" setup>
   import AppHeader from '@/components/AppHeader.vue'
+  import Section from '@/components/shared/Section.vue'
   import SelfDisplay from '@/components/SelfDisplay.vue'
   import JobsDisplay from '@/components/JobsDisplay/JobsDisplay.vue'
   import ProjectsDisplay from './components/ProjectsDisplay.vue'
@@ -30,11 +37,14 @@
   const projects = computed(() => stores.projects.projects);
 </script>
 
-<style>
+<style lang="scss">
+@import "@/scss/_variables.scss";
+
 html, body {
   overflow-x: hidden;
   margin: 0 0;
   scroll-behavior: smooth;
+  background-color: $light-grey;
 }
 
 .App__container {

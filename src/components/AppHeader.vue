@@ -4,15 +4,12 @@
     </header>
 </template>
 <script lang="ts" setup>
+    import { toDisplayValue } from '@/utils/utilities';
     import { computed } from 'vue'
 
     const hrefs = ['#experience', '#projects', '#contact-me']
 
-    const labels = computed(() => hrefs.map((href) => href.substring(1).split('-').map(capitalizeFirstLetter).join(' ')))
-
-    function capitalizeFirstLetter(str: string) {
-        return str.substring(0, 1).toUpperCase() + str.substring(1)
-    }
+    const labels = computed(() => hrefs.map((href) => toDisplayValue(href.substring(1))))
 </script>
 <style lang="scss">
 @import "@/scss/_variables.scss";
