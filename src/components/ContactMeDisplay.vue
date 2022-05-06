@@ -1,7 +1,4 @@
 <template>
-    <div id="contact-me" class="Contact-Me-Display__header">
-        Contact Me
-    </div>
     <form ref="contactMeForm" class="Contact-Me-Display__form" @submit.prevent="sendEmail">
         <LabeledInput label="name">
             <input id="name" v-model="name">

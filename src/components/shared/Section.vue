@@ -1,7 +1,10 @@
 <template>
-    <div class="Section__container" :style="style" data-aos="fade-in">
-        <SectionHeader :id="id" :title="title" :reverse="reverseHeader"/>
-        <slot/>
+    <div>
+        <a :id="id" class="Section__marker"></a>
+        <div class="Section__container" :style="style" data-aos="fade-in">
+            <SectionHeader :title="title" :reverse="reverseHeader"/>
+            <slot/>
+        </div>
     </div>
 </template>
 
@@ -24,5 +27,12 @@
 .Section__container {
     display: flex;
     flex-direction: row;
+}
+
+.Section__marker {
+    height: 0px;
+    width: 0px;
+    position: relative;
+    top: -60px;
 }
 </style>

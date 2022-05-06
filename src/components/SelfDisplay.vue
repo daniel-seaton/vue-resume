@@ -1,10 +1,10 @@
 <template>
-    <div class="Self-Display__container">
+    <div>
         <p class="Self-Display__phone-number"> {{ phoneNumber }}</p>
         <p class="Self-Display__full-name"> {{ fullName }} </p>
         <p class="Self-Display__email"> {{ email}}</p>
+        <div class="Self-Display__description"> {{ description }} </div>
     </div>
-    <div class="Self-Display__description"> {{ description }} </div>
 </template>
 
 <script lang="ts" setup>

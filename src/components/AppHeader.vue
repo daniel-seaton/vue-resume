@@ -7,7 +7,7 @@
     import { toDisplayValue } from '@/utils/utilities';
     import { computed } from 'vue'
 
-    const hrefs = ['#experience', '#projects', '#contact-me']
+    const hrefs = ['#about-me', '#experience', '#projects', '#contact-me',]
 
     const labels = computed(() => hrefs.map((href) => toDisplayValue(href.substring(1))))
 </script>

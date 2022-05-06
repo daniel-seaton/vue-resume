@@ -18,8 +18,8 @@
 
 <style lang="scss">
 
-$triangle-width: 400px;
-$triangle-height: 532.8px;
+$triangle-width: 425px;
+$triangle-height: 566.1px;
 $triangle-color: #007bff;
 $font-size: 5em;
 $top-offset: -.575em;

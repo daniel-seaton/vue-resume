@@ -1,14 +1,16 @@
 <template>
   <AppHeader />
   <div class="App__container">
-    <SelfDisplay :self="self" />
-    <Section id="experience"> 
+    <Section id="about-me">
+      <SelfDisplay :self="self" />
+    </Section>
+    <Section id="experience" reverseHeader> 
       <JobsDisplay :jobs="jobs"/>
     </Section>
-    <Section id="projects" reverseHeader> 
+    <Section id="projects"> 
       <ProjectsDisplay :projects="projects" />
     </Section>
-    <Section id="contact-me">
+    <Section id="contact-me" reverseHeader>
       <ContactMeDisplay />
     </Section>
   </div>
