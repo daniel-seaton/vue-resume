@@ -1,9 +1,10 @@
 <template>
-    <div id="projects" class="Projects-Display__header">Projects</div>
-    <div class="Projects-Display__row" v-for="project in projects" :key="project.id">
-        <div class="Projects-Display__title"> {{project.title}} </div>
-        <div class="Projects-Display__desc"> {{project.description}} </div>
-    </div>    
+    <div>
+        <div class="Projects-Display__row" v-for="project in projects" :key="project.id">
+            <div class="Projects-Display__title"> {{project.title}} </div>
+            <div class="Projects-Display__desc"> {{project.description}} </div>
+        </div>
+    </div>
 </template>
 
 <script lang="ts" setup>

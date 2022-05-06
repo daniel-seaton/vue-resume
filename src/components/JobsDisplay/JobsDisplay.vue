@@ -1,6 +1,7 @@
 <template>
-    <div id="experience" class="Jobs-Display__title">Experience</div>
-    <JobListItem v-for="job in jobs" :key="job.id" :job="job"/>    
+    <div>
+    <JobListItem v-for="job in jobs" :key="job.id" :job="job"/>
+    </div>
 </template>
 
 <script lang="ts" setup>

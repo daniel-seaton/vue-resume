@@ -1,9 +1,9 @@
 <template>
     <div class="Section-Header__container">
-        <div v-if="!reverse" class="Section-Header__arrow-right">
+        <div v-if="!reverse" class="Section-Header__arrow-right" data-aos="slide-left">
             <div class="Section-Header__arrow-label">{{ title }}</div>
         </div>
-        <div v-if="reverse" class="Section-Header__arrow-left">
+        <div v-if="reverse" class="Section-Header__arrow-left" data-aos="slide-right">
             <div class="Section-Header__arrow-label">{{ title }}</div>
         </div>
     </div>
@@ -24,6 +24,11 @@ $triangle-color: #007bff;
 $font-size: 5em;
 $top-offset: -.575em;
 $left-offset: 50px;
+
+@keyframes slide {
+    from {float: left}
+    to {float:right}
+}
 
 .Section-Header__container {
     width: 100%;
@@ -60,7 +65,6 @@ $left-offset: 50px;
     -moz-transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
     -o-transform: rotate(360deg);
-
     div {
         left: $left-offset
     }
@@ -74,6 +78,5 @@ $left-offset: 50px;
     color: white;
     top: $top-offset;
     font-size: $font-size;
-
 }
 </style>

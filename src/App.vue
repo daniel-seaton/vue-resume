@@ -15,6 +15,7 @@
 </template>
 
 <script lang="ts" setup>
+import AOS from 'aos';
   import AppHeader from '@/components/AppHeader.vue'
   import Section from '@/components/shared/Section.vue'
   import SelfDisplay from '@/components/SelfDisplay.vue'
@@ -24,7 +25,7 @@
   import { useJobsStore } from '@/stores/jobs'
   import { useContactsStore } from '@/stores/contacts'
   import { useProjectsStore } from '@/stores/projects'
-  import { computed } from '@vue/runtime-core'
+  import { computed, onMounted } from '@vue/runtime-core'
 
   const stores = {
     jobs: useJobsStore(),
@@ -35,6 +36,13 @@
   const self = computed(() => stores.contacts.self);
   const jobs = computed(() => stores.jobs.jobs);
   const projects = computed(() => stores.projects.projects);
+
+  onMounted(() => {
+    AOS.init({
+      anchorPlacement: 'center-center',
+      easing: 'ease-in',
+    })
+  })
 </script>
 
 <style lang="scss">

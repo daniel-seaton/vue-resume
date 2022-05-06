@@ -1,7 +1,7 @@
 <template>
-    <div class="Section__container">
+    <div class="Section__container" :style="style" data-aos="fade-in">
         <SectionHeader :id="id" :title="title" :reverse="reverseHeader"/>
-        <slot />
+        <slot/>
     </div>
 </template>
 
@@ -16,11 +16,13 @@
     }>()
 
     const title = computed(() => toDisplayValue(props.id))
+
+    const style = computed(() => `flex-direction: ${props.reverseHeader ? 'row-reverse': 'row'}`)
 </script>
 
 <style lang="scss">
 .Section__container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 </style>
